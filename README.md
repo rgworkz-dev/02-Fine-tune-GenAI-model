@@ -1,79 +1,70 @@
-# Data Project Template
+# Fine-Tune a Generative AI Model for Dialogue Summarization
 
-<a target="_blank" href="https://datalumina.com/">
-    <img src="https://img.shields.io/badge/Datalumina-Project%20Template-2856f7" alt="Datalumina Project" />
-</a>
+This repository contains a Jupyter notebook that demonstrates how to fine-tune an existing large language model (LLM) from Hugging Face for enhanced dialogue summarization. The notebook focuses on the [FLAN-T5](https://huggingface.co/docs/transformers/model_doc/flan-t5) model, which is an instruction-tuned model capable of summarizing text.
 
-## Cookiecutter Data Science
-This project template is a simplified version of the [Cookiecutter Data Science](https://cookiecutter-data-science.drivendata.org) template, created to suit the needs of Datalumina and made available as a GitHub template.
+## Overview
 
-## Adjusting .gitignore
+The notebook is divided into the following sections:
 
-Ensure you adjust the `.gitignore` file according to your project needs. For example, since this is a template, the `/data/` folder is commented out and data will not be exlucded from source control:
+1. **Load Required Dependencies, Dataset, and LLM**
+   - Load the necessary libraries and dependencies.
+   - Load a dialogue-summary dataset and the FLAN-T5 model.
+   - Test the model with zero-shot inference.
 
-```plaintext
-# exclude data from source control by default
-# /data/
-```
+2. **Perform Full Fine-Tuning**
+   - Preprocess the dialogue-summary dataset.
+   - Fine-tune the FLAN-T5 model with the preprocessed dataset.
+   - Evaluate the model qualitatively through human evaluation.
+   - Evaluate the model quantitatively using the ROUGE metric.
 
-Typically, you want to exclude this folder if it contains either sensitive data that you do not want to add to version control or large files.
+3. **Perform Parameter Efficient Fine-Tuning (PEFT)**
+   - Set up the PEFT/LoRA model for fine-tuning.
+   - Train the PEFT adapter.
+   - Evaluate the model qualitatively and quantitatively.
 
-## Duplicating the .env File
-To set up your environment variables, you need to duplicate the `.env.example` file and rename it to `.env`. You can do this manually or using the following terminal command:
+## Requirements
+
+- Python 3.7 or above
+- Jupyter Notebook
+- Hugging Face Transformers
+- Datasets
+- PEFT (Parameter-Efficient Fine-Tuning)
+
+You can install the required dependencies with the following command:
 
 ```bash
-cp .env.example .env # Linux, macOS, Git Bash, WSL
-copy .env.example .env # Windows Command Prompt
+pip install -r requirements.txt
 ```
 
-This command creates a copy of `.env.example` and names it `.env`, allowing you to configure your environment variables specific to your setup.
+## How to Run
 
+1. Clone this repository:
+   ```bash
+   git clone https://github.com/rgworkz-dev/02-Fine-tune-GenAI-model.git
+   cd fine-tune-generative-ai-model
+   ```
 
-## Project Organization
+2. Install the required dependencies:
+   ```bash
+   pip install -r requirements.txt
+   ```
 
-```
-├── LICENSE            <- Open-source license if one is chosen
-├── README.md          <- The top-level README for developers using this project
-├── data
-│   ├── external       <- Data from third party sources
-│   ├── interim        <- Intermediate data that has been transformed
-│   ├── processed      <- The final, canonical data sets for modeling
-│   └── raw            <- The original, immutable data dump
-│
-├── models             <- Trained and serialized models, model predictions, or model summaries
-│
-├── notebooks          <- Jupyter notebooks. Naming convention is a number (for ordering),
-│                         the creator's initials, and a short `-` delimited description, e.g.
-│                         `1.0-jqp-initial-data-exploration`
-│
-├── references         <- Data dictionaries, manuals, and all other explanatory materials
-│
-├── reports            <- Generated analysis as HTML, PDF, LaTeX, etc.
-│   └── figures        <- Generated graphics and figures to be used in reporting
-│
-├── requirements.txt   <- The requirements file for reproducing the analysis environment, e.g.
-│                         generated with `pip freeze > requirements.txt`
-│
-└── src                         <- Source code for this project
-    │
-    ├── __init__.py             <- Makes src a Python module
-    │
-    ├── config.py               <- Store useful variables and configuration
-    │
-    ├── dataset.py              <- Scripts to download or generate data
-    │
-    ├── features.py             <- Code to create features for modeling
-    │
-    │    
-    ├── modeling                
-    │   ├── __init__.py 
-    │   ├── predict.py          <- Code to run model inference with trained models          
-    │   └── train.py            <- Code to train models
-    │
-    ├── plots.py                <- Code to create visualizations 
-    │
-    └── services                <- Service classes to connect with external platforms, tools, or APIs
-        └── __init__.py 
-```
+3. Open the notebook:
+   ```bash
+   jupyter notebook Fine_tune_generative_ai_model.ipynb
+   ```
 
---------
+4. Run the cells in the notebook sequentially to fine-tune the model and evaluate its performance.
+
+## Results
+
+The notebook provides both qualitative and quantitative evaluations of the fine-tuned model. The ROUGE metric is used to compare the performance of the fully fine-tuned model with the parameter-efficient fine-tuned model.
+
+## License
+
+This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
+
+## Acknowledgments
+
+- Hugging Face for providing the pre-trained FLAN-T5 model and tools.
+- The open-source community for datasets and support.
