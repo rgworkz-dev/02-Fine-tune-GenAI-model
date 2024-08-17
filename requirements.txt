@@ -1,4 +1,5 @@
 ipykernel
+ipywidgets
 python-dotenv
 datasets
 torch
